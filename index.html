@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <a href="#welcome-section" id="welcome-link">WELCOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <section id="welcome-section">
+        <h1 id="welcome-name" class="animate-slidein-top">Heyy! I'm Sudhir Gunaseelan</h1>
+        <p id="welcome-jobtitle" class="jobtitle animate-slidein">Software & Web Developer</p>
+    </section>
+
+    <section id="about">
+        <h2>A LITTLE ABOUT ME</h2>
+    </section>
+
+    <section id="projects">
+        <h2>MY PROJECTS</h2>
+        <div class="project-tile">
+            <a href="https://github.com/Sudhir848/Monte-Carlo_Localization" target="_blank">Monte-Carlo
+                Locatilization</a>
+        </div>
+        <!-- Add more projects-->
+    </section>
+
+    <section id="skills">
+        <h2>SKILLS</h2>
+        <ul class="skills-list">
+            <li><i class="fab fa-python" style="color: #306998;"></i></li>
+            <li><i class="fab fa-html5" style="color: #e34c26;"></i></li>
+            <li><i class="fab fa-css3-alt" style="color: #1572b6;"></i></li>
+            <li><i class="fab fa-js-square" style="color: #f0db4f;"></i></li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>CONTACT ME</h2>
+        <form>
+            <input type="text" placeholder="Your name">
+            <input type="email" placeholder="Your email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <a id="profile-link" href="https://github.com/Sudhir848" target="_blank">My GitHub</a>
+
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        document.getElementById('welcome-link').addEventListener('click', function () {
+            var nameElement = document.getElementById('welcome-name');
+            var jobTitleElement = document.getElementById('welcome-jobtitle');
+
+            // Remove animation classes
+            nameElement.classList.remove('animate-slidein-top');
+            jobTitleElement.classList.remove('animate-slidein');
+
+            // Trigger reflow
+            void nameElement.offsetWidth;
+            void jobTitleElement.offsetWidth;
+
+            // Re-add animation classes
+            nameElement.classList.add('animate-slidein-top');
+            jobTitleElement.classList.add('animate-slidein');
+        });
+    </script>
+</body>
+
+</html>
