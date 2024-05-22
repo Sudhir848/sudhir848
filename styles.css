@@ -92,7 +92,7 @@ a {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 .skills-list li {
