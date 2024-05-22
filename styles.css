@@ -15,7 +15,6 @@ body, html {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    z-index: 10;
 }
 
 #navbar a {
