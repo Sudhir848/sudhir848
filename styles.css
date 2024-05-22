@@ -53,25 +53,91 @@ body, html {
     opacity: 0;
 }
 
-#about, #projects, #skills, #contact {
-    background: #f0f0f0;
+#about {
+    background: url('images/About.jpg') no-repeat center center fixed;
+    background-size: cover;
     font-size: 1em;
-    color: #000;
-    text-shadow: none;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 50px;
+    padding: 50px 20px;
 }
 
 .about-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#skills {
+    background: url('images/Skills.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 600px;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#projects {
+    background: url('images/Projects.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-size: 1em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#contact {
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI2MjZ8MHx8fGFsbHwxfHx8fHx8fDE2MjA4NjUzMTQ&ixlib=rb-1.2.1&q=80&w=1080') fixed;
+    background-size: cover;
+    font-size: 1em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+form {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.about-content, .skills-list, .project-tile, form, .social-media {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .profile-pic {
@@ -130,6 +196,16 @@ body, html {
     background-color: #39b7b7;
     border-radius: 50%;
     padding: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Animations */
