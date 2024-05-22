@@ -46,9 +46,16 @@ body, html {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
+#welcome-jobtitle {
+    font-size: 20px;
+    color: #fff;
+    font-weight: normal;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
 #about, #projects, #skills, #contact {
     background: #f0f0f0;
-    font-size: 15px;
     font-size: 1em;
     color: #000;
     text-shadow: none;
@@ -61,19 +68,18 @@ body, html {
     padding-top: 50px;
 }
 
-h1, h2 {
-    color: #39b7b7;
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
 }
 
-.jobtitle, li, form {
-    font-size: 20px;
-    color: #fff;
-    font-weight: normal;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.jobtitle {
-    opacity: 0;
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
 }
 
 .project-tile {
@@ -84,8 +90,9 @@ h1, h2 {
     background-color: #e0f7fa;
 }
 
-a {
-    text-decoration: none;
+.project-tile img {
+    width: 100%;
+    height: auto;
 }
 
 .skills-list {
@@ -105,6 +112,25 @@ a {
     margin: 20px;
     font-size: 20px;
     color: #39b7b7;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-media a {
+    font-size: 30px;
+    color: #39b7b7;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    color: #ffffff;
+    background-color: #39b7b7;
+    border-radius: 50%;
+    padding: 10px;
 }
 
 /* Animations */
