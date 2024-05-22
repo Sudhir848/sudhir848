@@ -54,7 +54,7 @@ body, html {
 }
 
 #about {
-    background: url('images/About.jpg') no-repeat center center fixed;
+    background: url('images/About.jpg') fixed;
     background-size: cover;
     font-size: 1em;
     color: #fff;
@@ -77,7 +77,7 @@ body, html {
 }
 
 #skills {
-    background: url('images/Skills.jpg') no-repeat center center fixed;
+    background: url('images/Skills.jpg') fixed;
     background-size: cover;
     font-size: 1em;
     color: #fff;
@@ -92,7 +92,7 @@ body, html {
 }
 
 #projects {
-    background: url('images/Projects.jpg') no-repeat center center fixed;
+    background: url('images/Projects.jpg') fixed;
     background-size: cover;
     font-size: 1em;
     color: #fff;
