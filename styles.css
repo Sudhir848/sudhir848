@@ -7,14 +7,25 @@ body, html {
     scroll-behavior: smooth;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
 #navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(6, 6, 5, 0.8);
+    background-color: #060605;
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
+    z-index: 1000;
 }
 
 #navbar a {
@@ -54,7 +65,7 @@ body, html {
 }
 
 #about {
-    background: url('images/About.jpg') fixed;
+    background: url('images/About.jpg') no-repeat center center;
     background-size: cover;
     font-size: 1em;
     color: #fff;
@@ -74,6 +85,7 @@ body, html {
     border-radius: 10px;
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
 }
 
 #skills {
@@ -107,18 +119,18 @@ body, html {
 }
 
 #contact {
-    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTI2MjZ8MHx8fGFsbHwxfHx8fHx8fDE2MjA4NjUzMTQ&ixlib=rb-1.2.1&q=80&w=1080') fixed;
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTI2MjZ8MHx8fGFsbHwxfHx8fHx8fDE2MjA4NjUzMTQ&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center;
     background-size: cover;
+    background-attachment: scroll;
     font-size: 1em;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    height: 100vh;
+    min-height: calc(90vh - 50px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 50px 20px;
 }
 
 form {
@@ -130,6 +142,11 @@ form {
     gap: 10px;
     width: 80%;
     max-width: 500px;
+}
+
+form button:hover {
+    cursor: pointer;
+    color: rgb(7, 7, 240);
 }
 
 .about-content, .skills-list, .project-tile, form, .social-media {
@@ -163,12 +180,18 @@ form {
 .skills-list {
     list-style: none;
     padding: 0;
-    display: flex;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
 }
 
-.skills-list li {
-    font-size: 40px;
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0;
 }
 
 #profile-link {
@@ -203,9 +226,9 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: relative;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
+    position: relative;
 }
 
 /* Animations */
