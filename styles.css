@@ -133,6 +133,12 @@ main {
     text-align: center;
 }
 
+#contact .or-text {
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
 form {
     background: rgba(0, 0, 0, 0.6);
     padding: 20px;
@@ -195,6 +201,11 @@ form button:hover {
     width: 90px;
     height: 90px;
     margin: 0;
+}
+
+.skills-icons-container {
+    background-color: white;
+    border-radius: 10px;
 }
 
 #profile-link {
