@@ -88,6 +88,16 @@ main {
     max-width: 900px;
 }
 
+.about-content > p > a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.about-content > p > a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
 #skills {
     background: url('https://images.unsplash.com/photo-1480506132288-68f7705954bd?q=80&w=1840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -171,16 +181,44 @@ form button:hover {
 }
 
 .project-tile {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    background-color: #e0f7fa;
+    position: relative;
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.project-tile img {
+.project-image {
+    position: relative;
     width: 100%;
     height: auto;
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.project-image .overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #f1f1f1;
+    width: 100%;
+    transition: 0.3s ease;
+    opacity: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.project-image:hover img {
+    transform: scale(1.1);
+}
+
+.project-image:hover .overlay {
+    opacity: 1;
 }
 
 .skills-list {
