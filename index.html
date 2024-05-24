@@ -191,17 +191,27 @@
     </footer>
 
     <script>
-        window.onscroll = function () { myFunction() };
+        window.onscroll = function () { highlightSection() };
 
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
+        function highlightSection() {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll("#navbar a");
 
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
+            let currentSectionId = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 50) {
+                    currentSectionId = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSectionId}`) {
+                    link.classList.add("active");
+                }
+            });
         }
 
         document.getElementById('welcome-link').addEventListener('click', function () {
@@ -220,7 +230,6 @@
             nameElement.classList.add('animate-slidein-top');
             jobTitleElement.classList.add('animate-slidein');
         });
-
     </script>
 </body>
 
