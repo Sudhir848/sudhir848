@@ -15,6 +15,7 @@ body {
 
 main {
     flex: 1;
+    padding-top: 60px;
 }
 
 #navbar {
@@ -25,7 +26,7 @@ main {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
-    z-index: auto;
+    z-index: 1000;
 }
 
 #navbar a {
@@ -340,10 +341,15 @@ footer {
     }
 
     .skills-list {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .projects-container {
         grid-template-columns: 1fr;
+    }
+
+    .about-content, form {
+        width: 90%;
+        padding: 10px;
     }
 }
