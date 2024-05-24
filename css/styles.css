@@ -50,15 +50,16 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #06087c;
+    color: cyan;
     font-size: 40px;
     padding-top: 50px;
+    padding-bottom: 40px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 #welcome-jobtitle {
     font-size: 30px;
-    color: cyan;
+    color: #ffffff;
     font-weight: bolder;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     opacity: 0;
