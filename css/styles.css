@@ -42,7 +42,7 @@ main {
 }
 
 #welcome-section {
-    background: url('https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background: url('https://images.unsplash.com/photo-1442323794357-25b2ec110967?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -50,16 +50,16 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #00ffff;
-    font-size: 2em;
+    color: #06087c;
+    font-size: 40px;
     padding-top: 50px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 #welcome-jobtitle {
-    font-size: 20px;
-    color: #fff;
-    font-weight: normal;
+    font-size: 30px;
+    color: cyan;
+    font-weight: bolder;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     opacity: 0;
 }
