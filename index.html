@@ -7,27 +7,49 @@
     <title>Personal Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 
 <body>
-    <nav id="navbar">
-        <a href="#welcome-section" id="welcome-link">WELCOME</a>
-        <a href="#about" id="about-link">ABOUT</a>
-        <a href="#skills" id="skills-link">SKILLS</a>
-        <a href="#projects" id="projects-link">PROJECTS</a>
-        <a href="#contact" id="contact-link">CONTACT</a>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">SUDHIR GUNASEELAN</a>
+            <button class="navbar-toggler" type="button" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#welcome-section" id="welcome-link">WELCOME</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#about" id="about-link">ABOUT</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#skills" id="skills-link">SKILLS</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#projects" id="projects-link">PROJECTS</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#contact" id="contact-link">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
-        <section id="welcome-section">
+        <section id="welcome-section" class="d-flex flex-column align-items-center justify-content-center text-center">
             <h1 id="welcome-name" class="animate-slidein-top">Heyy! I'm Sudhir Gunaseelan</h1>
             <p id="welcome-jobtitle" class="jobtitle animate-slidein">Software & Web Developer</p>
         </section>
 
         <section id="about">
             <h2>A LITTLE BIT ABOUT ME</h2>
-            <div class="about-content">
+            <div class="about-content col-md-8 col-sm-4 col-xs-2">
                 <img src="images/profile-pic.png" alt="Profile Picture" class="profile-pic">
                 <p>
                     I'm a passionate software and web developer with a keen interest in creating dynamic and engaging
@@ -44,8 +66,8 @@
 
         <section id="skills">
             <h2>SKILLS AND TECHNOLOGIES I'VE USED</h2>
-            <div class="skills-icons-container">
-                <ul class="skills-list">
+            <div class="skills-icons-container col-md-6 col-sm-4 col-xs-2">
+                <ul class="skills-list col-md-6 col-sm-4 col-xs-2">
                     <div class="icon-container">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
                             height="50" />
@@ -60,7 +82,7 @@
                     </div>
                     <div class="icon-container">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                            height="40" />
+                            height="50" />
                     </div>
                     <div class="icon-container">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
@@ -124,84 +146,95 @@
 
         <section id="projects">
             <h2>PROJECTS I'VE DONE</h2>
-            <div class="projects-container">
-                <div class="project-tile">
-                    <a href="https://github.com/Sudhir848/Monte-Carlo_Localization" target="_blank">
-                        <div class="project-image">
-                            <img src="images/monte-carlo.jpg" alt="Monte Carlo Project">
-                            <div class="overlay">
-                                <div class="text">Monte Carlo Localization with Cozmo Robot</div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="projects-container col-md-8 col-sm-4 col-xs-2">
+                <div class="project-tile" data-title="Monte Carlo Localization with Cozmo Robot"
+                    data-link="https://github.com/Sudhir848/Monte-Carlo_Localization">
+                    <div class="project-image">
+                        <img src="images/monte-carlo.jpg" alt="Monte Carlo Project">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">Monte Carlo Localization with Cozmo Robot</div>
+                    </div>
                 </div>
-                <div class="project-tile">
-                    <a href="https://github.com/Sudhir848/Sokoban-Game-Logic" target="_blank">
-                        <div class="project-image">
-                            <img src="images/Sokoban.png" alt="sokoban game image">
-                            <div class="overlay">
-                                <div class="text">Sokoban Game using C++</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-tile" data-title="Sokoban Game using C++"
+                    data-link="https://github.com/Sudhir848/Sokoban-Game-Logic">
+                    <div class="project-image">
+                        <img src="images/Sokoban.png" alt="sokoban game image">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">Sokoban Game using C++</div>
+                    </div>
                 </div>
-                <div class="project-tile">
-                    <a href="https://github.com/Sudhir848/Checkers-Game" target="_blank">
-                        <div class="project-image">
-                            <img src="images/Checkers.png" alt="Checkers Game">
-                            <div class="overlay">
-                                <div class="text">Checkers Game using C++</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-tile" data-title="Checkers Game using C++"
+                    data-link="https://github.com/Sudhir848/Checkers-Game">
+                    <div class="project-image">
+                        <img src="images/Checkers.png" alt="Checkers Game">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">Checkers Game using C++</div>
+                    </div>
                 </div>
-                <div class="project-tile">
-                    <a href="https://sudhir848.github.io/My-Personal-Portfolio/" target="_blank">
-                        <div class="project-image">
-                            <img src="images/Portfolio.png" alt="Portfolio Site">
-                            <div class="overlay">
-                                <div class="text">Personal Portfolio Website</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-tile" data-title="Personal Portfolio Website"
+                    data-link="https://sudhir848.github.io/My-Personal-Portfolio/">
+                    <div class="project-image">
+                        <img src="images/Portfolio.png" alt="Portfolio Site">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">Personal Portfolio Website</div>
+                    </div>
                 </div>
-                <div class="project-tile">
-                    <a href="https://github.com/Sudhir848/ML-Final_Project" target="_blank">
-                        <div class="project-image">
-                            <img src="images/Machine Learning Output - image.png" alt="Machine Learning Program">
-                            <div class="overlay">
-                                <div class="text">Google Open Images Mutual Gaze dataset using Python</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-tile" data-title="Google Open Images Mutual Gaze dataset using Python"
+                    data-link="https://github.com/Sudhir848/ML-Final_Project">
+                    <div class="project-image">
+                        <img src="images/Machine Learning Output - image.png" alt="Machine Learning Program">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">Google Open Images Mutual Gaze dataset using Python</div>
+                    </div>
                 </div>
-                <div class="project-tile">
-                    <a href="https://sudhir848.github.io/freeCodeCamp-Magazine/" target="_blank">
-                        <div class="project-image">
-                            <img src="images/freeCodeCamp.png" alt="Magazine">
-                            <div class="overlay">
-                                <div class="text">freeCodeCamp Magazine</div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="project-tile" data-title="freeCodeCamp Magazine"
+                    data-link="https://sudhir848.github.io/freeCodeCamp-Magazine/">
+                    <div class="project-image">
+                        <img src="images/freeCodeCamp.png" alt="Magazine">
+                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text text-overlay">freeCodeCamp Magazine</div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>GET IN TOUCH!</h2>
-            <form action="https://formspree.io/f/xayrzorw" method="POST">
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Your email" required>
-                <textarea name="message" placeholder="Message" required></textarea>
-                <button type="submit">Send</button>
+            <h2 class="font-weight-bold">GET IN TOUCH!</h2>
+            <form action="https://formspree.io/f/xayrzorw" method="POST" class="mx-auto">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Message" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info">Send</button>
+                </div>
             </form>
-            <div class="or-text">
-                <p>OR</p>
-            </div>
             <div class="social-media">
-                <a href="https://github.com/Sudhir848" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/sudhir-gunaseelan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Sudhir848" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span class="tooltip-text">GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/sudhir-gunaseelan" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="tooltip-text">LinkedIn</span>
+                </a>
             </div>
         </section>
     </main>
@@ -209,6 +242,21 @@
     <footer>
         <p>&copy; 2024 Sudhir Gunaseelan. All rights reserved.</p>
     </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div id="modalTitle" class="modal-title"></div>
+            <div class="modal-image">
+                <img id="img01" class="modal-image-content">
+            </div>
+            <div id="modalDescription" class="modal-description"></div>
+            <button id="visitSourceBtn">Visit Source</button>
+            <button type="button" class="close btn btn-lg" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    </div>
 
     <script>
         window.onscroll = function () { highlightSection() };
@@ -250,7 +298,70 @@
             nameElement.classList.add('animate-slidein-top');
             jobTitleElement.classList.add('animate-slidein');
         });
+
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var modalTitle = document.getElementById("modalTitle");
+        var modalDescription = document.getElementById("modalDescription");
+        var visitSourceBtn = document.getElementById("visitSourceBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Modal is hidden on page load
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var modalTitle = document.getElementById("modalTitle");
+            var modalDescription = document.getElementById("modalDescription");
+            var visitSourceBtn = document.getElementById("visitSourceBtn");
+            var span = document.getElementsByClassName("close")[0];
+
+            modal.style.display = "none";
+
+            document.querySelectorAll('.project-tile').forEach(tile => {
+                tile.addEventListener('click', event => {
+                    event.preventDefault();
+                    var imgSrc = tile.querySelector('img').src;
+                    var title = tile.getAttribute('data-title');
+                    var description = tile.getAttribute('data-description');
+                    var link = tile.getAttribute('data-link');
+
+                    modal.style.display = "flex";
+                    modalImg.src = imgSrc;
+                    modalTitle.innerHTML = title;
+                    modalDescription.innerHTML = description;
+                    visitSourceBtn.onclick = function () {
+                        window.open(link, '_blank');
+                    }
+
+                    // Disable background scrolling
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            span.onclick = function () {
+                modal.style.display = "none";
+                // Enable background scrolling
+                document.body.style.overflow = 'auto';
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    // Enable background scrolling
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            window.onkeydown = function (event) {
+                if (event.key === "Escape") {
+                    modal.style.display = "none";
+                    // Enable background scrolling
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
     </script>
+
 </body>
 
 </html>
