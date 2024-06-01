@@ -43,7 +43,8 @@
 
     <main>
         <section id="welcome-section" class="d-flex flex-column align-items-center justify-content-center text-center">
-            <h1 id="welcome-name" class="animate-slidein-top">Heyy! I'm Sudhir Gunaseelan</h1>
+            <div id="greeting-message"></div>
+            <h1 id="welcome-name" class="animate-fadein">Heyy! I'm Sudhir Gunaseelan</h1>
             <p id="welcome-jobtitle" class="jobtitle animate-slidein">Software & Web Developer</p>
         </section>
 
@@ -260,7 +261,6 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -295,18 +295,45 @@
         document.getElementById('welcome-link').addEventListener('click', function () {
             var nameElement = document.getElementById('welcome-name');
             var jobTitleElement = document.getElementById('welcome-jobtitle');
+            var greetingElement = document.getElementById('greeting-message');
 
             // Remove animation classes
-            nameElement.classList.remove('animate-slidein-top');
+            nameElement.classList.remove('animate-fadein');
             jobTitleElement.classList.remove('animate-slidein');
+            greetingElement.classList.remove('animate-slidein-top-delay');
 
             // Trigger reflow
             void nameElement.offsetWidth;
             void jobTitleElement.offsetWidth;
+            void greetingElement.offsetWidth;
 
             // Re-add animation classes
-            nameElement.classList.add('animate-slidein-top');
+            nameElement.classList.add('animate-fadein');
             jobTitleElement.classList.add('animate-slidein');
+            setTimeout(displayGreeting, 100);
+        });
+
+        // Function to display greeting message based on time of day
+        function displayGreeting() {
+            const now = new Date();
+            const hours = now.getHours();
+            let greeting;
+
+            if (hours < 12) {
+                greeting = "Good Morning";
+            } else if (hours < 18) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+            const greetingElement = document.getElementById('greeting-message');
+            greetingElement.innerText = greeting;
+            greetingElement.classList.add('animate-slidein-top-delay');
+        }
+
+        // Call the function on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            displayGreeting();
         });
 
         var modal = document.getElementById("myModal");
