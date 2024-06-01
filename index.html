@@ -271,7 +271,7 @@
             let currentSectionId = "";
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 70; // Adjust offset for small screens
+                const sectionTop = section.offsetTop - 70;
                 const sectionHeight = section.offsetHeight;
 
                 if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
@@ -372,6 +372,19 @@
                         document.getElementById('navbar-toggler').click();
                     }
                 });
+            });
+
+            // Event listener to handle form submission with Enter key
+            document.getElementById('contact-form').addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' && event.target.tagName === 'TEXTAREA' && name === 'message') {
+                    if (!event.shiftKey) {
+                        event.preventDefault();
+                        this.submit();
+                    }
+                } else if (event.key === 'Enter') {
+                    event.preventDefault();
+                    this.submit();
+                }
             });
         });
     </script>
