@@ -468,18 +468,23 @@ footer {
     padding-top: 20px;
 }
 
-#visitSourceBtn {
-    display: block;
-    margin: 20px auto;
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+#visitSourceBtn, #visitSiteBtn {
     padding: 10px 20px;
     background-color: #39b7b7;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-#visitSourceBtn:hover {
+#visitSourceBtn:hover, #visitSiteBtn:hover {
     background-color: #333;
     color: #39b7b7;
 }
