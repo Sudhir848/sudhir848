@@ -65,24 +65,24 @@ main {
 #greeting-message {
     font-size: 30px;
     font-weight: bolder;
-    color: white;
+    color:  black;
     opacity: 0;
-    margin-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 #welcome-name {
     font-size: 50px;
     font-weight: bolder;
-    margin-top: 20px;
+    padding-top: 0px;
     margin-bottom: 20px;
 }
 
 #welcome-jobtitle {
     font-size: 30px;
     font-weight: bolder;
-    color: white;
+    color: black;
     opacity: 0;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 #about {
