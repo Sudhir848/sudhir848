@@ -62,16 +62,25 @@ main {
     margin-bottom: 50px;
 }
 
+#greeting-message {
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+    opacity: 0;
+    margin-bottom: 5px;
+}
+
 #welcome-name {
     font-size: 50px;
     font-weight: bolder;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #welcome-jobtitle {
     font-size: 30px;
     font-weight: bolder;
-    color: cyan;
+    color: white;
     opacity: 0;
     margin-top: 15px;
 }
@@ -530,17 +539,17 @@ footer {
 }
 
 .animate-fadein {
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 3s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .animate-slidein {
-    animation: slideInFromBottom 2s ease-in-out 1s;
+    animation: slideInFromBottom 2s;
     animation-fill-mode: forwards;
 }
 
-.animate-slidein-top {
-    animation: slideInFromTop 2s ease-in-out;
+.animate-slidein-top-delay {
+    animation: slideInFromTop 2s;
     animation-fill-mode: forwards;
 }
 
