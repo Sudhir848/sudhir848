@@ -178,7 +178,8 @@
                     </div>
                 </div>
                 <div class="project-tile" data-title="Personal Portfolio Website"
-                    data-link="https://sudhir848.github.io/My-Personal-Portfolio/">
+                    data-link="https://github.com/Sudhir848/My-Personal-Portfolio"
+                    data-site-link="https://sudhir848.github.io/My-Personal-Portfolio/">
                     <div class="project-image">
                         <img src="images/Portfolio.png" alt="Portfolio Site">
                         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
@@ -198,7 +199,8 @@
                     </div>
                 </div>
                 <div class="project-tile" data-title="freeCodeCamp Magazine"
-                    data-link="https://sudhir848.github.io/freeCodeCamp-Magazine/">
+                    data-link="https://github.com/Sudhir848/freeCodeCamp-Magazine"
+                    data-site-link="https://sudhir848.github.io/freeCodeCamp-Magazine/">
                     <div class="project-image">
                         <img src="images/freeCodeCamp.png" alt="Magazine">
                         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
@@ -250,7 +252,10 @@
                 <img id="img01" class="modal-image-content">
             </div>
             <div id="modalDescription" class="modal-description"></div>
-            <button id="visitSourceBtn">Visit Source</button>
+            <div class="button-container">
+                <button id="visitSourceBtn">Visit Source</button>
+                <button id="visitSiteBtn">Visit Site</button>
+            </div>
             <button type="button" class="close btn btn-lg" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -318,6 +323,7 @@
             var modalTitle = document.getElementById("modalTitle");
             var modalDescription = document.getElementById("modalDescription");
             var visitSourceBtn = document.getElementById("visitSourceBtn");
+            var visitSiteBtn = document.getElementById("visitSiteBtn");
             var span = document.getElementsByClassName("close")[0];
 
             modal.style.display = "none";
@@ -329,6 +335,7 @@
                     var title = tile.getAttribute('data-title');
                     var description = tile.getAttribute('data-description');
                     var link = tile.getAttribute('data-link');
+                    var siteLink = tile.getAttribute('data-site-link');
 
                     modal.style.display = "flex";
                     modalImg.src = imgSrc;
@@ -336,6 +343,15 @@
                     modalDescription.innerHTML = description;
                     visitSourceBtn.onclick = function () {
                         window.open(link, '_blank');
+                    }
+
+                    if (siteLink) {
+                        visitSiteBtn.style.display = 'block';
+                        visitSiteBtn.onclick = function () {
+                            window.open(siteLink, '_blank');
+                        };
+                    } else {
+                        visitSiteBtn.style.display = 'none';
                     }
 
                     // Disable background scrolling
