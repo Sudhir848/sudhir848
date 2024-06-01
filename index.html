@@ -15,11 +15,11 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">SUDHIR GUNASEELAN</a>
-            <button class="navbar-toggler" type="button" data-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="#welcome-section" id="welcome-link">WELCOME</a>
@@ -49,25 +49,24 @@
 
         <section id="about">
             <h2>A LITTLE BIT ABOUT ME</h2>
-            <div class="about-content col-md-8 col-sm-4 col-xs-2">
+            <div class="about-content">
                 <img src="images/profile-pic.png" alt="Profile Picture" class="profile-pic">
                 <p>
                     I'm a passionate software and web developer with a keen interest in creating dynamic and engaging
-                    web & software applications.
-                    Currently completing my Bachelor's program and in the pathway to pursue Master's in <a
-                        href="https://www.uml.edu/sciences/computer-science/programs/masters/" target="_blank">Computer
-                        Science</a>
-                    at University of Massachusetts Lowell. I have worked with various programming languages and
-                    technologies like Python, C, C++, HTML, CSS, and Javascript. Aiming to leverage my skills in a
-                    challenging environment that offers growth and learning opportunities.
+                    web & software applications. Currently completing my Bachelor's program and in the pathway to pursue
+                    Master's in <a href="https://www.uml.edu/sciences/computer-science/programs/masters/"
+                        target="_blank">Computer Science</a> at University of Massachusetts Lowell. I have worked with
+                    various programming languages and technologies like Python, C, C++, HTML, CSS, and Javascript.
+                    Aiming to leverage my skills in a challenging environment that offers growth and learning
+                    opportunities.
                 </p>
             </div>
         </section>
 
         <section id="skills">
             <h2>SKILLS AND TECHNOLOGIES I'VE USED</h2>
-            <div class="skills-icons-container col-md-6 col-sm-4 col-xs-2">
-                <ul class="skills-list col-md-6 col-sm-4 col-xs-2">
+            <div class="skills-icons-container">
+                <ul class="skills-list">
                     <div class="icon-container">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
                             height="50" />
@@ -146,7 +145,7 @@
 
         <section id="projects">
             <h2>PROJECTS I'VE DONE</h2>
-            <div class="projects-container col-md-8 col-sm-4 col-xs-2">
+            <div class="projects-container">
                 <div class="project-tile" data-title="Monte Carlo Localization with Cozmo Robot"
                     data-link="https://github.com/Sudhir848/Monte-Carlo_Localization">
                     <div class="project-image">
@@ -158,7 +157,8 @@
                     </div>
                 </div>
                 <div class="project-tile" data-title="Sokoban Game using C++"
-                    data-link="https://github.com/Sudhir848/Sokoban-Game-Logic">
+                    data-link="https://github.com/Sudhir848/Sokoban-Game-Logic"
+                    data-description="<span style='color: blue;'><strong>Sokoban Game</strong></span> is a classic puzzle video game in which the player pushes boxes or crates within a warehouse setting, trying to get them to designated storage locations. I implemented this using <span style='color: blue;'><strong>C++</strong></span> which included logic for player movements, box interactions, and collision detection, and also making use of <span style='color: blue;'><strong>SFML</strong></span> for rendering graphics. The Sokoban class manages the game state, player position, and level data, while methods like movePlayer and isWon handle game mechanics and victory conditions. The game employs C++ standard libraries and smart pointers for efficient data management and memory use.">
                     <div class="project-image">
                         <img src="images/Sokoban.png" alt="sokoban game image">
                         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="project-tile" data-title="Checkers Game using C++"
-                    data-link="https://github.com/Sudhir848/Checkers-Game">
+                    data-link="https://github.com/Sudhir848/Checkers-Game" data-description="">
                     <div class="project-image">
                         <img src="images/Checkers.png" alt="Checkers Game">
                         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
@@ -258,6 +258,9 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         window.onscroll = function () { highlightSection() };
 
@@ -268,8 +271,10 @@
             let currentSectionId = "";
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 50) {
+                const sectionTop = section.offsetTop - 70; // Adjust offset for small screens
+                const sectionHeight = section.offsetHeight;
+
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
                     currentSectionId = section.getAttribute("id");
                 }
             });
@@ -359,6 +364,15 @@
                     document.body.style.overflow = 'auto';
                 }
             }
+
+            // Event listener to collapse the navbar when a link is clicked on small screens
+            document.querySelectorAll('#navbarNav .nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        document.getElementById('navbar-toggler').click();
+                    }
+                });
+            });
         });
     </script>
 
