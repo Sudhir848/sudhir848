@@ -137,17 +137,19 @@ main {
     font-size: 1em;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 80px;
+    margin-top: 50px;
 }
 
 #projects h2 {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 #contact {
@@ -221,38 +223,39 @@ footer {
 }
 
 .projects-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    width: 100%;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .project-tile {
     position: relative;
-    width: 250px;
-    height: 150px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: rgba(0, 0, 0, 0.6);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-image {
     width: 100%;
-    height: 100%;
-    display: inline-block;
+    height: 150px;
+    display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 }
 
 .project-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     transition: transform 0.5s ease;
     display: block;
 }
@@ -397,6 +400,9 @@ footer {
 }
 
 .social-media a:hover .tooltip-text {
+    font-size: 13px;
+    font-weight: bolder;
+    color: whitesmoke;
     visibility: visible;
     opacity: 1;
 }
@@ -496,7 +502,7 @@ footer {
     position: fixed;
 }
 
-.close span:hover{
+.close span:hover {
     color: white;
     font-weight: 300;
     background-color: red;
@@ -533,21 +539,42 @@ footer {
     animation-fill-mode: forwards;
 }
 
-@media (max-width: 600px) {
-    #navbar {
-        flex-direction: column;
+@media (max-width: 1200px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
     }
 
     .skills-list {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
-
     .about-content, form {
         width: 90%;
         padding: 10px;
+    }
+
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #navbar a {
+        padding: 10px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    #navbar {
+        align-items: center;
     }
 }
