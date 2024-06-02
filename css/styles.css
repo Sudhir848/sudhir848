@@ -282,7 +282,6 @@ footer {
     background: rgba(50, 50, 50, 0.6);
     opacity: 0;
     transition: opacity 0.3s ease;
-    text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -309,7 +308,7 @@ footer {
 }
 
 .overlay .text {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
     color: cyan;
     text-align: center;
