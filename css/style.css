@@ -112,13 +112,17 @@ main {
     max-width: 900px;
 }
 
+.about-content p {
+    font-size: 18px;;
+}
+
 .about-content > p > a {
-    color: #007BFF;
+    color: cyan;
     text-decoration: none;
 }
 
 .about-content > p > a:hover {
-    color: #0056b3;
+    color: lightcyan;
     text-decoration: underline;
 }
 
