@@ -254,8 +254,9 @@
             </div>
             <div id="modalDescription" class="modal-description"></div>
             <div class="button-container">
-                <button id="visitSourceBtn">Visit Source</button>
                 <button id="visitSiteBtn">Visit Site</button>
+                <div class="or-text">OR</div>
+                <button id="visitSourceBtn">Visit Source</button>
             </div>
             <button type="button" class="close btn btn-lg" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -341,6 +342,7 @@
         var modalTitle = document.getElementById("modalTitle");
         var modalDescription = document.getElementById("modalDescription");
         var visitSourceBtn = document.getElementById("visitSourceBtn");
+        var orText = document.querySelector('.or-text');
         var span = document.getElementsByClassName("close")[0];
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -379,6 +381,12 @@
                         };
                     } else {
                         visitSiteBtn.style.display = 'none';
+                    }
+
+                    if (siteLink && link) {
+                        orText.style.display = 'block';
+                    } else {
+                        orText.style.display = 'none';
                     }
 
                     // Disable background scrolling
