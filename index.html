@@ -14,7 +14,7 @@
 <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">SUDHIR GUNASEELAN</a>
+            <a class="navbar-brand" href="#" id="brand-link">SUDHIR GUNASEELAN</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navbar-toggler">
                 <span class="navbar-toggler-icon"></span>
@@ -298,7 +298,10 @@
             });
         }
 
-        document.getElementById('welcome-link').addEventListener('click', function () {
+        document.getElementById('welcome-link').addEventListener('click', triggerWelcomeAnimation);
+        document.getElementById('brand-link').addEventListener('click', triggerWelcomeAnimation);
+
+        function triggerWelcomeAnimation() {
             var nameElement = document.getElementById('welcome-name');
             var jobTitleElement = document.getElementById('welcome-jobtitle');
             var greetingElement = document.getElementById('greeting-message');
@@ -317,9 +320,9 @@
             nameElement.classList.add('animate-fadein');
             jobTitleElement.classList.add('animate-slidein');
             setTimeout(displayGreeting, 100);
-        });
+        }
 
-        // Function to display greeting message based on time of day
+        // Function to display greeting message
         function displayGreeting() {
             const now = new Date();
             const hours = now.getHours();
