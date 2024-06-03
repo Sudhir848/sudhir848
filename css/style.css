@@ -101,6 +101,8 @@ main {
 
 #about h2 {
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .about-content {
@@ -132,16 +134,19 @@ main {
     font-size: 1em;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 20px;
 }
 
 #skills h2 {
     font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 #projects {
@@ -564,6 +569,8 @@ footer {
     animation-fill-mode: forwards;
 }
 
+
+/*Media Queries*/
 @media (max-width: 1200px) {
     .projects-container {
         grid-template-columns: repeat(2, 1fr);
@@ -601,5 +608,9 @@ footer {
 @media (max-width: 576px) {
     #navbar {
         align-items: center;
+    }
+
+    .about-content {
+        grid-template-columns: auto;
     }
 }
