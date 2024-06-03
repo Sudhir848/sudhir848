@@ -36,15 +36,39 @@ main {
 }
 
 #navbar a:hover {
-    color: #ffffff;
-    background-color: #39b7b7;
-    border-radius: 5px;
+    color:skyblue;
 }
 
 #navbar a.active {
     color: #ffffff;
     background-color: #39b7b7;
     border-radius: 5px;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+    transform: scale(1.1);
+}
+
+.navbar-brand:active .navbar-logo {
+    background-color: none;
+    transform: scale(0.9);
+}
+
+.navbar-brand:focus {
+    outline: none;
+    background-color: transparent;
 }
 
 #welcome-section {
