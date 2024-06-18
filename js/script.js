@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     displayGreeting();
-    setupProjectObserver();
-    setupSkillsObserver();
-    setupAboutObserver();
-    setupRotateObserver('about-title');
-    setupRotateObserver('skills-title');
-    setupRotateObserver('projects-title');
-    setupRotateObserver('contact-title');
+    projectsObserver();
+    skillsObserver();
+    aboutObserver();
+    rotateObserver('about-title');
+    rotateObserver('skills-title');
+    rotateObserver('projects-title');
+    rotateObserver('contact-title');
 });
 
-function setupRotateObserver(elementId) {
+function rotateObserver(elementId) {
     const element = document.getElementById(elementId);
 
     const observerOptions = {
@@ -20,7 +20,9 @@ function setupRotateObserver(elementId) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 element.classList.add('rotate-animation');
-                observer.unobserve(entry.target);
+            } else {
+                // Remove the class when the element is out of view
+                element.classList.remove('rotate-animation');
             }
         });
     }, observerOptions);
@@ -28,7 +30,7 @@ function setupRotateObserver(elementId) {
     observer.observe(element);
 }
 
-function setupAboutObserver() {
+function aboutObserver() {
     const aboutItems = document.querySelectorAll('.about-item');
     const aboutSection = document.getElementById('about');
 
@@ -53,7 +55,7 @@ function setupAboutObserver() {
     observer.observe(aboutSection);
 }
 
-function setupSkillsObserver() {
+function skillsObserver() {
     const skills = document.querySelectorAll('.skill-item');
     const skillsSection = document.getElementById('skills');
 
@@ -78,7 +80,7 @@ function setupSkillsObserver() {
     observer.observe(skillsSection);
 }
 
-function setupProjectObserver() {
+function projectsObserver() {
     const tiles = document.querySelectorAll('.project-tile');
     const projectsSection = document.getElementById('projects');
 
