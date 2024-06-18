@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setupProjectObserver();
     setupSkillsObserver();
     setupAboutObserver();
-    animateAboutText();
 });
 
 function setupProjectObserver() {
@@ -86,35 +85,6 @@ function decodeHTMLEntities(text) {
     var txt = document.createElement("textarea");
     txt.innerHTML = text;
     return txt.value;
-}
-
-function animateAboutText() {
-    const aboutText = document.getElementById('about-text');
-    const textContent = aboutText.innerHTML;
-    const decodedText = decodeHTMLEntities(textContent);
-    let formattedText = '';
-    let delay = 0;
-
-    const addAnimationSpan = (word, delay) => {
-        return `<span class="fade-in-word" style="animation-delay:${delay}s; white-space: nowrap;">${word}</span>`;
-    };
-
-    const parts = decodedText.split(/(<[^>]+>|\s+)/);
-
-    for (let i = 0; i < parts.length; i++) {
-        const part = parts[i];
-
-        if (part.startsWith('<') && part.endsWith('>')) {
-            formattedText += part;
-        } else if (part.trim() === '') {
-            formattedText += part;
-        } else {
-            formattedText += addAnimationSpan(part, delay);
-            delay += part.length * 0.05;
-        }
-    }
-
-    aboutText.innerHTML = formattedText;
 }
 
 window.onscroll = function () { highlightSection() };
