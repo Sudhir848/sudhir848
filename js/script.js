@@ -3,11 +3,34 @@ document.addEventListener('DOMContentLoaded', function () {
     setupProjectObserver();
     setupSkillsObserver();
     setupAboutObserver();
+    setupRotateObserver('about-title');
+    setupRotateObserver('skills-title');
+    setupRotateObserver('projects-title');
+    setupRotateObserver('contact-title');
 });
 
-function setupProjectObserver() {
-    const tiles = document.querySelectorAll('.project-tile');
-    const projectsSection = document.getElementById('projects');
+function setupRotateObserver(elementId) {
+    const element = document.getElementById(elementId);
+
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                element.classList.add('rotate-animation');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(element);
+}
+
+function setupAboutObserver() {
+    const aboutItems = document.querySelectorAll('.about-item');
+    const aboutSection = document.getElementById('about');
 
     const observerOptions = {
         threshold: 0.1
@@ -16,10 +39,10 @@ function setupProjectObserver() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                tiles.forEach((tile, index) => {
+                aboutItems.forEach((item, index) => {
                     setTimeout(() => {
-                        tile.classList.remove('hidden');
-                        tile.classList.add('animate-fadein');
+                        item.classList.remove('hidden');
+                        item.classList.add('animate-fadein');
                     }, index * 200);
                 });
                 observer.unobserve(entry.target);
@@ -27,7 +50,7 @@ function setupProjectObserver() {
         });
     }, observerOptions);
 
-    observer.observe(projectsSection);
+    observer.observe(aboutSection);
 }
 
 function setupSkillsObserver() {
@@ -55,9 +78,9 @@ function setupSkillsObserver() {
     observer.observe(skillsSection);
 }
 
-function setupAboutObserver() {
-    const aboutItems = document.querySelectorAll('.about-item');
-    const aboutSection = document.getElementById('about');
+function setupProjectObserver() {
+    const tiles = document.querySelectorAll('.project-tile');
+    const projectsSection = document.getElementById('projects');
 
     const observerOptions = {
         threshold: 0.1
@@ -66,11 +89,10 @@ function setupAboutObserver() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                aboutItems.forEach((item, index) => {
+                tiles.forEach((tile, index) => {
                     setTimeout(() => {
-                        item.classList.remove('hidden');
-                        item.classList.add('animate-fadein');
-                        animateAboutText();
+                        tile.classList.remove('hidden');
+                        tile.classList.add('animate-fadein');
                     }, index * 200);
                 });
                 observer.unobserve(entry.target);
@@ -78,7 +100,7 @@ function setupAboutObserver() {
         });
     }, observerOptions);
 
-    observer.observe(aboutSection);
+    observer.observe(projectsSection);
 }
 
 function decodeHTMLEntities(text) {
