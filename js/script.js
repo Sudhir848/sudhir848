@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
-            window.history.replaceState(null, null, ' '); // Update URL without adding to history
+            window.history.replaceState(null, null, ' '); // Updating URL without adding to history for backtracking to previous window
             triggerWelcomeAnimation();
         }
     });
