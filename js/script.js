@@ -7,7 +7,31 @@ document.addEventListener('DOMContentLoaded', function () {
     rotateObserver('skills-title');
     rotateObserver('projects-title');
     rotateObserver('contact-title');
-    backButton();
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                window.history.replaceState(null, null, ' '); // Update URL without adding to history
+            }
+        });
+    });
+
+    document.getElementById('welcome-link').addEventListener('click', triggerWelcomeAnimation);
+    document.getElementById('brand-link').addEventListener('click', function (event) {
+        event.preventDefault();
+        const targetElement = document.getElementById('welcome-section');
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            window.history.replaceState(null, null, ' '); // Update URL without adding to history
+            triggerWelcomeAnimation();
+        }
+    });
 });
 
 function rotateObserver(elementId) {
@@ -22,7 +46,6 @@ function rotateObserver(elementId) {
             if (entry.isIntersecting) {
                 element.classList.add('rotate-animation');
             } else {
-                // Remove the class when the element is out of view
                 element.classList.remove('rotate-animation');
             }
         });
@@ -124,7 +147,7 @@ function highlightSection() {
         const sectionTop = section.offsetTop - 70;
         const sectionHeight = section.offsetHeight;
 
-        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
             currentSectionId = section.getAttribute("id");
         }
     });
@@ -136,9 +159,6 @@ function highlightSection() {
         }
     });
 }
-
-document.getElementById('welcome-link').addEventListener('click', triggerWelcomeAnimation);
-document.getElementById('brand-link').addEventListener('click', triggerWelcomeAnimation);
 
 function triggerWelcomeAnimation() {
     var nameElement = document.getElementById('welcome-name');
@@ -279,18 +299,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-function backButton() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            window.scrollTo({
-                top: targetElement.offsetTop - 5,
-                behavior: 'smooth'
-            });
-        });
-    });
-}
