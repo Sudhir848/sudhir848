@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     rotateObserver('skills-title');
     rotateObserver('projects-title');
     rotateObserver('contact-title');
-    smoothScrolling();
+    backButton();
 });
 
 function rotateObserver(elementId) {
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function smoothScrolling() {
+function backButton() {
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', function (event) {
@@ -288,7 +288,7 @@ function smoothScrolling() {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             window.scrollTo({
-                top: targetElement.offsetTop - 30,
+                top: targetElement.offsetTop - 5,
                 behavior: 'smooth'
             });
         });
