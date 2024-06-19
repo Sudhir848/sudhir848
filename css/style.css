@@ -203,11 +203,6 @@ main {
     text-decoration: underline;
 }
 
-.about-content lan {
-    color: lightcyan;
-    text-decoration: underline;
-}
-
 .about-content, .skills-list, .project-tile, form, .social-media {
     background: rgba(0, 0, 0, 0.6);
     padding: 20px;
@@ -256,7 +251,7 @@ main {
 
 #skills h2 {
     font-weight: bold;
-    margin-top: 0px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -278,7 +273,8 @@ main {
 
 #projects h2 {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #contact {
@@ -296,6 +292,12 @@ main {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 0px;
+}
+
+#contact h2 {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;    
 }
 
 #contact .or-text {
@@ -342,7 +344,7 @@ footer {
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0px;
 }
 
 .project-tile {
