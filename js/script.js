@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     rotateObserver('skills-title');
     rotateObserver('projects-title');
     rotateObserver('contact-title');
+
+    setupSmoothScrolling();
 });
 
 function rotateObserver(elementId) {
@@ -21,7 +23,6 @@ function rotateObserver(elementId) {
             if (entry.isIntersecting) {
                 element.classList.add('rotate-animation');
             } else {
-                // Remove the class when the element is out of view
                 element.classList.remove('rotate-animation');
             }
         });
@@ -144,17 +145,14 @@ function triggerWelcomeAnimation() {
     var jobTitleElement = document.getElementById('welcome-jobtitle');
     var greetingElement = document.getElementById('greeting-message');
 
-    // Remove animation classes
     nameElement.classList.remove('animate-fadein');
     jobTitleElement.classList.remove('animate-slidein');
     greetingElement.classList.remove('animate-slidein-top-delay');
 
-    // Trigger reflow
     void nameElement.offsetWidth;
     void jobTitleElement.offsetWidth;
     void greetingElement.offsetWidth;
 
-    // Re-add animation classes
     nameElement.classList.add('animate-fadein');
     jobTitleElement.classList.add('animate-slidein');
     setTimeout(displayGreeting, 100);
@@ -186,7 +184,6 @@ var orText = document.querySelector('.or-text');
 var span = document.getElementsByClassName("close")[0];
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Modal is hidden on page load
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("img01");
     var modalTitle = document.getElementById("modalTitle");
@@ -229,21 +226,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 orText.style.display = 'none';
             }
 
-            // Disable background scrolling
             document.body.style.overflow = 'hidden';
         });
     });
 
     span.onclick = function () {
         modal.style.display = "none";
-        // Enable background scrolling
         document.body.style.overflow = 'auto';
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            // Enable background scrolling
             document.body.style.overflow = 'auto';
         }
     }
@@ -251,12 +245,10 @@ document.addEventListener('DOMContentLoaded', function () {
     window.onkeydown = function (event) {
         if (event.key === "Escape") {
             modal.style.display = "none";
-            // Enable background scrolling
             document.body.style.overflow = 'auto';
         }
     }
 
-    // Event listener to collapse the navbar when a link is clicked on small screens
     document.querySelectorAll('#navbarNav .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (window.innerWidth < 992) {
@@ -265,7 +257,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Event listener to handle form submission with Enter key
     document.getElementById('contact-form').addEventListener('keydown', function (event) {
         if (event.key === 'Enter' && event.target.tagName === 'TEXTAREA' && name === 'message') {
             if (!event.shiftKey) {
@@ -278,3 +269,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+function setupSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            window.scrollTo({
+                top: targetElement.offsetTop - 60, // Adjust this value to position the section correctly
+                behavior: 'smooth'
+            });
+        });
+    });
+}
