@@ -669,10 +669,10 @@ footer {
 
 @keyframes rotateOnce {
     from {
-        transform: rotate(0deg);
+        transform: rotateY(0deg);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotateY(360deg);
     }
 }
 
@@ -710,7 +710,8 @@ footer {
 }
 
 .rotate-animation {
-    animation: rotateOnce 1s ease-out;
+    animation: rotateOnce 1.5s ease forwards;
+    perspective: 1000px;
 }
 
 .animate-up {
