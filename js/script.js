@@ -69,7 +69,7 @@ function aboutObserver() {
                     setTimeout(() => {
                         item.classList.remove('hidden');
                         item.classList.add('animate-fadein');
-                    }, index * 200);
+                    }, index * 1000);
                 });
                 observer.unobserve(entry.target);
             }
@@ -94,7 +94,7 @@ function skillsObserver() {
                     setTimeout(() => {
                         skill.classList.remove('hidden');
                         skill.classList.add('animate-fadein');
-                    }, index * 200);
+                    }, index * 300);
                 });
                 observer.unobserve(entry.target);
             }
