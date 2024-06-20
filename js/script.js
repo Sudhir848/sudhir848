@@ -119,7 +119,7 @@ function projectsObserver() {
                     setTimeout(() => {
                         tile.classList.remove('hidden');
                         tile.classList.add('animate-fadein');
-                    }, index * 200);
+                    }, index * 700);
                 });
                 observer.unobserve(entry.target);
             }
