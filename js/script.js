@@ -58,6 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
             isZoomed = false;
         }
     });
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm.reset();
+
+    window.addEventListener('pageshow', function () {
+        contactForm.reset();
+    });
 });
 
 function rotateObserver(elementId) {
