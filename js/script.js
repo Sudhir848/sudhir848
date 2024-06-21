@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
-                window.history.replaceState(null, null, ' '); // Update URL without adding to history
+                window.history.replaceState(null, null, ' '); // Updating URL without adding to history
             }
         });
     });
@@ -28,8 +28,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
-            window.history.replaceState(null, null, ' '); // Updating URL without adding to history for backtracking to previous window
+            window.history.replaceState(null, null, ' ');
             triggerWelcomeAnimation();
+        }
+    });
+
+    // Event listener for zooming profile picture on click
+    const profilePicContainer = document.getElementById('profile-pic-container');
+    const profilePic = profilePicContainer.querySelector('.profile-pic');
+    let isZoomed = false;
+
+    profilePicContainer.addEventListener('click', function (event) {
+        event.stopPropagation();
+        profilePic.classList.toggle('zoomed');
+        isZoomed = !isZoomed;
+    });
+
+    document.addEventListener('click', function () {
+        if (isZoomed) {
+            profilePic.classList.remove('zoomed');
+            isZoomed = false;
+        }
+    });
+
+    // Event listener for Escape key to zoom out profile picture
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && isZoomed) {
+            profilePic.classList.remove('zoomed');
+            isZoomed = false;
         }
     });
 });
@@ -165,17 +191,14 @@ function triggerWelcomeAnimation() {
     var jobTitleElement = document.getElementById('welcome-jobtitle');
     var greetingElement = document.getElementById('greeting-message');
 
-    // Remove animation classes
     nameElement.classList.remove('animate-fadein');
     jobTitleElement.classList.remove('animate-slidein');
     greetingElement.classList.remove('animate-slidein-top-delay');
 
-    // Trigger reflow
     void nameElement.offsetWidth;
     void jobTitleElement.offsetWidth;
     void greetingElement.offsetWidth;
 
-    // Re-add animation classes
     nameElement.classList.add('animate-fadein');
     jobTitleElement.classList.add('animate-slidein');
     setTimeout(displayGreeting, 100);
