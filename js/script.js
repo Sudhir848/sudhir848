@@ -127,7 +127,7 @@ function skillsObserver() {
                     setTimeout(() => {
                         skill.classList.remove('hidden');
                         skill.classList.add('animate-fadein');
-                    }, index * 300);
+                    }, index * 200);
                 });
                 observer.unobserve(entry.target);
             }
@@ -152,7 +152,7 @@ function projectsObserver() {
                     setTimeout(() => {
                         tile.classList.remove('hidden');
                         tile.classList.add('animate-fadein');
-                    }, index * 700);
+                    }, index * 500);
                 });
                 observer.unobserve(entry.target);
             }
