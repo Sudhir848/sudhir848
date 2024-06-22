@@ -165,7 +165,7 @@ main {
 
 #about h2 {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 
@@ -283,7 +283,7 @@ main {
 
 #projects h2 {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 0px;
 }
 
@@ -307,7 +307,7 @@ main {
 #contact h2 {
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
 }
 
 #contact .or-text {
