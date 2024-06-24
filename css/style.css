@@ -28,15 +28,6 @@ main {
     z-index: 1000;
 }
 
-#navbar .nav-link {
-    color: cyan;
-    text-decoration: none;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    position: relative;
-    display: inline-block;
-}
-
 #navbar .navbar-brand {
     color: cyan;
     text-decoration: none;
@@ -63,16 +54,18 @@ main {
 #navbar .nav-link::after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: 0;
     width: 0;
     height: 5px;
     background-color: cyan;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
 }
 
 #navbar a:hover::after {
-    width: 50%;
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 #navbar a.active {
