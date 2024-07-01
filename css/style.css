@@ -388,6 +388,55 @@ footer {
     bottom: 10px;
 }
 
+.rocket-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+    outline: none;
+}
+
+.rocket-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.rocket-btn:hover {
+    transform: scale(1.2);
+}
+
+.rocket-btn:focus {
+    outline: none;
+}
+
+.hover-text {
+    visibility: hidden;
+    width: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-top: -40px;
+    margin-bottom: -50px;
+    margin-left: -40px;
+    margin-right: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 9px;
+}
+
+.rocket-btn:hover .hover-text {
+    visibility: visible;
+    opacity: 1;
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -759,6 +808,16 @@ footer {
     }
 }
 
+@keyframes popIn {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pop {
+    display: inline-block;
+    animation: popIn 1s infinite;
+}
+
 @keyframes rotateBorder {
     from {
         transform: rotate(0deg);
@@ -806,17 +865,6 @@ footer {
     animation: pop 0.2s ease-in-out;
     transform: scale(1.2);
     border-color: linear-gradient(45deg, cyan, magenta, yellow, cyan);
-}
-
-/* .profile-pic-container:hover::before,
-.profile-pic.zoomed::before {
-    opacity: 1;
-    animation: rotateBorder 4s linear infinite, gradientShift 6s linear infinite;
-} */
-
-.zoomed {
-    transform: scale(1.4) !important;
-    z-index: 1;
 }
 
 .hidden {
