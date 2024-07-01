@@ -7,6 +7,37 @@ document.addEventListener('DOMContentLoaded', function () {
     rotateObserver('skills-title');
     rotateObserver('projects-title');
     rotateObserver('contact-title');
+    welcomeObserver();
+
+    function smoothScrollTo(targetElement) {
+        const startPosition = window.scrollY;
+        const endPosition = targetElement.offsetTop;
+        const distance = endPosition - startPosition;
+        const duration = 900;
+        const easing = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+        let startTime = null;
+
+        function scrollStep(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const easingProgress = easing(progress);
+
+            window.scrollTo(0, startPosition + (distance * easingProgress));
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(scrollStep);
+            } else {
+                const welcomeSection = document.getElementById('welcome-section');
+                if (welcomeSection) {
+                    welcomeSection.classList.remove('push-up');
+                }
+            }
+        }
+
+        requestAnimationFrame(scrollStep);
+    }
 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function (event) {
@@ -15,25 +46,60 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-                window.history.replaceState(null, null, ' '); // Updating URL without adding to history
+                smoothScrollTo(targetElement);
+                window.history.replaceState(null, null, ' ');
+                if (targetId === 'welcome-section') {
+                    triggerWelcomeAnimation();
+                }
             }
         });
     });
 
-    document.getElementById('welcome-link').addEventListener('click', triggerWelcomeAnimation);
+    document.getElementById('welcome-link').addEventListener('click', function () {
+        smoothScrollTo(document.getElementById('welcome-section'));
+        triggerWelcomeAnimation();
+    });
+
     document.getElementById('brand-link').addEventListener('click', function (event) {
         event.preventDefault();
-        const targetElement = document.getElementById('welcome-section');
+        smoothScrollTo(document.getElementById('welcome-section'));
+        triggerWelcomeAnimation();
+    });
 
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-            window.history.replaceState(null, null, ' ');
-            triggerWelcomeAnimation();
+    const downArrow = document.getElementById('down-arrow');
+    downArrow.addEventListener('click', function () {
+        const aboutSection = document.getElementById('about');
+
+        if (aboutSection) {
+            smoothScrollTo(aboutSection);
         }
     });
 
-    // Event listener for zooming profile picture on click
+    window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        const welcomeSection = document.getElementById('welcome-section');
+        const sections = document.querySelectorAll('section');
+
+        let inWelcomeSection = false;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 70;
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                if (section.id === 'welcome-section') {
+                    inWelcomeSection = true;
+                }
+            }
+        });
+
+        if (inWelcomeSection) {
+            navbar.classList.remove('shrink');
+        } else {
+            navbar.classList.add('shrink');
+        }
+    });
+
     const profilePicContainer = document.getElementById('profile-pic-container');
     const profilePic = profilePicContainer.querySelector('.profile-pic');
     let isZoomed = false;
@@ -51,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Event listener for Escape key to zoom out profile picture
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && isZoomed) {
             profilePic.classList.remove('zoomed');
@@ -160,6 +225,24 @@ function projectsObserver() {
     }, observerOptions);
 
     observer.observe(projectsSection);
+}
+
+function welcomeObserver() {
+    const welcomeSection = document.getElementById('welcome-section');
+
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                triggerWelcomeAnimation();
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(welcomeSection);
 }
 
 function decodeHTMLEntities(text) {
