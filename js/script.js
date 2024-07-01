@@ -130,6 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('pageshow', function () {
         contactForm.reset();
     });
+
+    const rocketBtn = document.getElementById('rocket-btn');
+    rocketBtn.addEventListener('click', function () {
+        const welcomeSection = document.getElementById('welcome-section');
+        welcomeSection.scrollIntoView({ behavior: 'smooth' });
+    });
 });
 
 function rotateObserver(elementId) {
