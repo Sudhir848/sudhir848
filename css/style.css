@@ -43,6 +43,11 @@ main {
     display: inline-block;
 }
 
+.navbar-brand.page-scroll {
+    letter-spacing: 1px;
+    font-size: 1.2em;
+}
+
 #navbar a:hover {
     color: skyblue;
 }
