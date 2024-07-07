@@ -346,26 +346,13 @@ main {
     background-size: cover;
     font-size: 1em;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 80px 20px;
-}
-
-.resume-container {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    border-radius: 10px;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    width: 100%;
 }
 
 .resume-title {
@@ -376,7 +363,8 @@ main {
 
 .resume-button {
     font-size: 1.5em;
-    color: #fff;
+    font-weight: bold;
+    color: #000000;
     background-color: #39b7b7;
     padding: 15px 30px;
     margin-top: 15px;
