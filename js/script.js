@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     projectsObserver();
     skillsObserver();
     aboutObserver();
+    welcomeObserver();
     rotateObserver('about-title');
     rotateObserver('skills-title');
     rotateObserver('projects-title');
     rotateObserver('contact-title');
-    welcomeObserver();
 
     function smoothScrollTo(targetElement) {
         const startPosition = window.scrollY;
@@ -140,17 +140,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function rotateObserver(elementId) {
     const element = document.getElementById(elementId);
-
     const observerOptions = {
         threshold: 0.5
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 element.classList.add('rotate-animation');
-            } else {
-                element.classList.remove('rotate-animation');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
