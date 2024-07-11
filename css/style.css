@@ -729,26 +729,33 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-    background-color: #fff;
+    background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
     max-height: 90%;
     overflow-y: auto;
     width: 80%;
     max-width: 700px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ccc;
 }
 
 #modalTitle {
-    font-size: 1.2em;
+    background: linear-gradient(145deg, #005bbb, #0077ff);
+    font-size: 1.5em;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    color: cyan;
+    margin: -20px -20px 20px -20px;
+    padding: 20px 0;
     text-align: center;
-    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    letter-spacing: 1px;
 }
 
 .modal-image img {
@@ -757,13 +764,21 @@ footer {
     object-fit: cover;
     display: block;
     margin: 0 auto;
+    margin-top: -20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 .modal-description {
-    font-size: 1em;
+    font-size: 1.1em;
     color: #333;
     padding-top: 20px;
+    line-height: 1.6;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button-container {
@@ -775,29 +790,35 @@ footer {
 
 #visitSourceBtn, #visitSiteBtn {
     padding: 10px 20px;
-    background-color: #39b7b7;
+    background-color: #0077ff;
     color: #fff;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 #visitSourceBtn:hover, #visitSiteBtn:hover {
-    background-color: #333;
-    color: #39b7b7;
+    background-color: #005bbb;
+    color: cyan;
+    transform: scale(1.05);
 }
 
 #myModal .or-text {
     font-size: 1em;
     font-weight: bold;
     margin-top: 12px;
+    color: #333;
 }
 
 /* The close button */
 .close {
     position: absolute;
-    top: 15px;
-    right: 60px;
+    top: 20px;
+    right: 50px;
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
@@ -813,7 +834,7 @@ footer {
 
 .close span:hover {
     color: white;
-    font-weight: 300;
+    font-weight: 500;
     background-color: red;
 }
 
