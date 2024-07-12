@@ -62,7 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('brand-link').addEventListener('click', function (event) {
         event.preventDefault();
-        smoothScrollTo(document.getElementById('welcome-section'));
+        const welcomeSection = document.getElementById('welcome-section');
+        document.documentElement.style.scrollBehavior = 'auto';
+        welcomeSection.scrollIntoView({ behavior: 'instant' });
+        window.scrollTo(0, 0);
+        document.documentElement.style.scrollBehavior = '';
         triggerWelcomeAnimation();
     });
 
@@ -324,7 +328,6 @@ var orText = document.querySelector('.or-text');
 var span = document.getElementsByClassName("close")[0];
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Modal is hidden on page load
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("img01");
     var modalTitle = document.getElementById("modalTitle");
