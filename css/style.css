@@ -79,6 +79,10 @@ main {
     right: 0;
 }
 
+#navbar a.active::after {
+    width: 0;
+}
+
 #navbar a.active {
     color: #000000;
     background-color: #39b7b7;
