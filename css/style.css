@@ -819,27 +819,38 @@ footer {
 }
 
 /* The close button */
-.close {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close span {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+.close-modal {
     position: fixed;
+    top: 65px;
+    right: 330px;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
 }
 
-.close span:hover {
-    color: white;
-    font-weight: 500;
+.close-modal:hover {
     background-color: red;
+}
+
+.close-modal span {
+    display: inline-block;
+}
+
+.close-modal:focus {
+    outline: none;
+}
+
+.close-modal:active {
+    outline: none;
 }
 
 /* Animations */
