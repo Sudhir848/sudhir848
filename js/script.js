@@ -325,7 +325,7 @@ var modalTitle = document.getElementById("modalTitle");
 var modalDescription = document.getElementById("modalDescription");
 var visitSourceBtn = document.getElementById("visitSourceBtn");
 var orText = document.querySelector('.or-text');
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close-modal")[0];
 
 document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById("myModal");
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var modalDescription = document.getElementById("modalDescription");
     var visitSourceBtn = document.getElementById("visitSourceBtn");
     var visitSiteBtn = document.getElementById("visitSiteBtn");
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close-modal")[0];
 
     modal.style.display = "none";
 
