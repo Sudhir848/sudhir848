@@ -658,12 +658,12 @@ footer {
 .social-media {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
     position: relative;
 }
 
 .social-media a {
-    font-size: 30px;
+    font-size: 33px;
     color: #39b7b7;
     display: flex;
     align-items: center;
