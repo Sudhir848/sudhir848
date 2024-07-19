@@ -470,7 +470,7 @@ footer {
     cursor: pointer;
     position: relative;
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 0px;
     outline: none;
 }
 
