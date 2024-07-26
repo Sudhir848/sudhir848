@@ -338,6 +338,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     modal.style.display = "none";
 
+    // Store the scroll positions of each modal
+    const modalScrollPositions = {};
+
     document.querySelectorAll('.project-tile').forEach(tile => {
         tile.addEventListener('click', event => {
             event.preventDefault();
@@ -370,27 +373,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 orText.style.display = 'none';
             }
 
+            // Restore the scroll position for this modal if it was previously scrolled
+            if (modalScrollPositions[title]) {
+                document.querySelector('.modal-scroll-container').scrollTop = modalScrollPositions[title];
+            } else {
+                document.querySelector('.modal-scroll-container').scrollTop = 0;
+            }
+
             // Disable background scrolling
             document.body.style.overflow = 'hidden';
         });
     });
 
     span.onclick = function () {
+        modalScrollPositions[modalTitle.innerHTML] = document.querySelector('.modal-scroll-container').scrollTop;
         modal.style.display = "none";
-        // Enable background scrolling
         document.body.style.overflow = 'auto';
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
+            modalScrollPositions[modalTitle.innerHTML] = document.querySelector('.modal-scroll-container').scrollTop;
             modal.style.display = "none";
-            // Enable background scrolling
             document.body.style.overflow = 'auto';
         }
     }
 
     window.onkeydown = function (event) {
         if (event.key === "Escape") {
+            // Save the current scroll position of the modal before closing it
+            modalScrollPositions[modalTitle.innerHTML] = document.querySelector('.modal-scroll-container').scrollTop;
             modal.style.display = "none";
             // Enable background scrolling
             document.body.style.overflow = 'auto';
