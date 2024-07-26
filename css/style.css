@@ -741,8 +741,8 @@ footer {
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    max-height: 90%;
-    overflow-y: auto;
+    max-height: 105%;
+    overflow: hidden;
     width: 80%;
     max-width: 700px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -762,14 +762,21 @@ footer {
     letter-spacing: 1px;
 }
 
+.modal-scroll-container {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+}
+
 .modal-image img {
     width: 400px;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
     display: block;
     margin: 0 auto;
     margin-top: -20px;
-    border-radius: 10px;
+    margin-bottom: -10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
@@ -777,7 +784,7 @@ footer {
     font-size: 1.1em;
     color: #333;
     padding-top: 20px;
-    line-height: 1.6;
+    line-height: 1.8;
     text-align: center;
     background: #f9f9f9;
     padding: 20px;
@@ -812,17 +819,17 @@ footer {
 }
 
 #myModal .or-text {
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: bolder;
     margin-top: 12px;
-    color: #333;
+    color: #000000;
 }
 
 /* The close button */
 .close-modal {
     position: fixed;
-    top: 65px;
-    right: 330px;
+    top: 30px;
+    right: 305px;
     width: 35px;
     height: 35px;
     background-color: rgba(0, 0, 0, 0.5);
