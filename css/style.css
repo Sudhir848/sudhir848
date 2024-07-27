@@ -254,7 +254,7 @@ main {
     text-decoration: underline;
 }
 
-.about-content, .skills-list, .project-tile, form, .social-media {
+.about-content, .skills-list,.project-tile, form, .social-media {
     background: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
@@ -1012,23 +1012,39 @@ footer {
 }
 
 /*Media Queries*/
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
+    #projects h2 {
+        margin-top: 6px;
+    }
+
+    #contact h2 {
+        margin-top: 35px;
+    }
+
     .projects-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .skills-list {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(7, 1fr);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1007px) {
+    #about h2 {
+        margin-top: 60px;
+    }
+
     .projects-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #skills h2 {
+        margin-top: 40px;
     }
 
     .skills-list {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(7, 1fr);
     }
 
     .about-content, form {
@@ -1044,14 +1060,78 @@ footer {
     #navbar a {
         padding: 10px 0;
     }
+    
+    .close-modal {
+        top: 30px;
+        right: 130px;
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .modal-image img {
+        width: 350px;
+        height: 230px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        margin-top: -20px;
+        margin-bottom: -10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 719px) {
     #navbar {
         align-items: center;
     }
 
     .about-content {
         grid-template-columns: auto;
+    }
+
+    .projects-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #skills h2 {
+        margin-top: 50px;
+    }
+    
+    .skills-list {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    #contact h2 {
+        margin-top: 50px;
+    }
+
+    .close-modal {
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .modal-image img {
+        width: 280px;
+        height: 230px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        margin-top: -20px;
+        margin-bottom: -10px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     }
 }
