@@ -140,6 +140,24 @@ document.addEventListener('DOMContentLoaded', function () {
         const welcomeSection = document.getElementById('welcome-section');
         welcomeSection.scrollIntoView({ behavior: 'smooth' });
     });
+
+    const inputs = document.querySelectorAll('.form-control');
+
+    // Function to update placeholder
+    function updatePlaceholder() {
+        if (this.value || document.activeElement === this) {
+            this.placeholder = this.dataset.placeholder;
+        } else {
+            this.placeholder = " ";
+        }
+    }
+
+    // Attach event listeners to each input
+    inputs.forEach(input => {
+        input.addEventListener('focus', updatePlaceholder);
+        input.addEventListener('blur', updatePlaceholder);
+        input.addEventListener('input', updatePlaceholder);
+    });
 });
 
 function rotateObserver(elementId) {
