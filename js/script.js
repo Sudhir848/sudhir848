@@ -143,216 +143,92 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const inputs = document.querySelectorAll('.form-control');
 
-    function updatePlaceholder() {
-        if (this.value || document.activeElement === this) {
-            this.placeholder = this.dataset.placeholder;
-        } else {
-            this.placeholder = " ";
+    function showPlaceholder(input) {
+        if (!input.value) {
+            input.placeholder = input.dataset.placeholder;
+        }
+    }
+
+    function hidePlaceholder(input) {
+        if (!input.value) {
+            input.placeholder = ' ';
         }
     }
 
     inputs.forEach(input => {
-        input.addEventListener('focus', updatePlaceholder);
-        input.addEventListener('blur', updatePlaceholder);
-        input.addEventListener('input', updatePlaceholder);
-    });
-});
+        const label = input.nextElementSibling;
 
-function rotateObserver(elementId) {
-    const element = document.getElementById(elementId);
-    const observerOptions = {
-        threshold: 0.5
-    };
+        input.addEventListener('focus', function () {
+            showPlaceholder(this);
+        });
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                element.classList.add('rotate-animation');
-                observer.unobserve(entry.target);
+        input.addEventListener('blur', function () {
+            hidePlaceholder(this);
+        });
+
+        input.addEventListener('mouseenter', function () {
+            if (!label.classList.contains('label-shifted')) {
+                showPlaceholder(this);
             }
         });
-    }, observerOptions);
 
-    observer.observe(element);
-}
+        input.addEventListener('mouseleave', function () {
+            hidePlaceholder(this);
+        });
 
-function aboutObserver() {
-    const aboutItems = document.querySelectorAll('.about-item');
-    const aboutSection = document.getElementById('about');
-
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                aboutItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.remove('hidden');
-                        item.classList.add('animate-fadein');
-                    }, index * 1000);
-                });
-                observer.unobserve(entry.target);
+        input.addEventListener('input', function () {
+            if (this.value && !label.classList.contains('label-shifted')) {
+                label.classList.add('label-shifted');
+            } else if (!this.value) {
+                label.classList.remove('label-shifted');
             }
         });
-    }, observerOptions);
-
-    observer.observe(aboutSection);
-}
-
-function skillsObserver() {
-    const skills = document.querySelectorAll('.skill-item');
-    const skillsSection = document.getElementById('skills');
-
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                skills.forEach((skill, index) => {
-                    setTimeout(() => {
-                        skill.classList.remove('hidden');
-                        skill.classList.add('animate-fadein');
-                    }, index * 200);
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    observer.observe(skillsSection);
-}
-
-function projectsObserver() {
-    const tiles = document.querySelectorAll('.project-tile');
-    const projectsSection = document.getElementById('projects');
-
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                tiles.forEach((tile, index) => {
-                    setTimeout(() => {
-                        tile.classList.remove('hidden');
-                        tile.classList.add('animate-fadein');
-                    }, index * 500);
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    observer.observe(projectsSection);
-}
-
-function welcomeObserver() {
-    const welcomeSection = document.getElementById('welcome-section');
-
-    const observerOptions = {
-        threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                triggerWelcomeAnimation();
-            }
-        });
-    }, observerOptions);
-
-    observer.observe(welcomeSection);
-}
-
-function decodeHTMLEntities(text) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = text;
-    return txt.value;
-}
-
-window.onscroll = function () { highlightSection() };
-
-function highlightSection() {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("#navbar a");
-
-    let currentSectionId = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 70;
-        const sectionHeight = section.offsetHeight;
-
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            currentSectionId = section.getAttribute("id");
-        }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${currentSectionId}`) {
-            link.classList.add("active");
-        }
-    });
-}
-
-function triggerWelcomeAnimation() {
-    var nameElement = document.getElementById('welcome-name');
-    var jobTitleElement = document.getElementById('welcome-jobtitle');
-    var greetingElement = document.getElementById('greeting-message');
-
-    nameElement.classList.remove('animate-fadein');
-    jobTitleElement.classList.remove('animate-slidein');
-    greetingElement.classList.remove('animate-slidein-top-delay');
-
-    void nameElement.offsetWidth;
-    void jobTitleElement.offsetWidth;
-    void greetingElement.offsetWidth;
-
-    nameElement.classList.add('animate-fadein');
-    jobTitleElement.classList.add('animate-slidein');
-    setTimeout(displayGreeting, 100);
-}
-
-function displayGreeting() {
-    const now = new Date();
-    const hours = now.getHours();
-    let greeting;
-
-    if (hours < 12) {
-        greeting = "Good Morning!";
-    } else if (hours < 18) {
-        greeting = "Good Afternoon!";
-    } else {
-        greeting = "Good Evening!";
+    function validateForm() {
+        let valid = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                valid = false;
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
+        return valid;
     }
-    const greetingElement = document.getElementById('greeting-message');
-    greetingElement.innerText = greeting;
-    greetingElement.classList.add('animate-slidein-top-delay');
-}
 
-var modal = document.getElementById("myModal");
-var modalImg = document.getElementById("img01");
-var modalTitle = document.getElementById("modalTitle");
-var modalDescription = document.getElementById("modalDescription");
-var visitSourceBtn = document.getElementById("visitSourceBtn");
-var orText = document.querySelector('.or-text');
-var span = document.getElementsByClassName("close-modal")[0];
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("img01");
-    var modalTitle = document.getElementById("modalTitle");
-    var modalDescription = document.getElementById("modalDescription");
-    var visitSourceBtn = document.getElementById("visitSourceBtn");
-    var visitSiteBtn = document.getElementById("visitSiteBtn");
-    var span = document.getElementsByClassName("close-modal")[0];
+        if (validateForm()) {
+            this.submit();
+        } else {
+            alert('Please fill in all fields correctly.');
+        }
+    });
 
-    modal.style.display = "none";
+    // Event listener to handle form submission with Enter key
+    document.getElementById('contact-form').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && event.target.tagName !== 'TEXTAREA') {
+            event.preventDefault();
+            if (validateForm()) {
+                this.submit();
+            } else {
+                alert('Please fill in all fields correctly.');
+            }
+        }
+    });
+
+    // Modal event listeners
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const visitSourceBtn = document.getElementById("visitSourceBtn");
+    const visitSiteBtn = document.getElementById("visitSiteBtn");
+    const orText = document.querySelector('.or-text');
+    const span = document.getElementsByClassName("close-modal")[0];
 
     // Store the scroll positions of each modal
     const modalScrollPositions = {};
@@ -389,7 +265,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 orText.style.display = 'none';
             }
 
-            // Restore the scroll position for this modal if it was previously scrolled
             if (modalScrollPositions[title]) {
                 document.querySelector('.modal-scroll-container').scrollTop = modalScrollPositions[title];
             } else {
@@ -434,16 +309,180 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Event listener to handle form submission with Enter key
-    document.getElementById('contact-form').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter' && event.target.tagName === 'TEXTAREA' && name === 'message') {
-            if (!event.shiftKey) {
-                event.preventDefault();
-                this.submit();
+    function rotateObserver(elementId) {
+        const element = document.getElementById(elementId);
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    element.classList.add('rotate-animation');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(element);
+    }
+
+    function aboutObserver() {
+        const aboutItems = document.querySelectorAll('.about-item');
+        const aboutSection = document.getElementById('about');
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    aboutItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.remove('hidden');
+                            item.classList.add('animate-fadein');
+                        }, index * 1000);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(aboutSection);
+    }
+
+    function skillsObserver() {
+        const skills = document.querySelectorAll('.skill-item');
+        const skillsSection = document.getElementById('skills');
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    skills.forEach((skill, index) => {
+                        setTimeout(() => {
+                            skill.classList.remove('hidden');
+                            skill.classList.add('animate-fadein');
+                        }, index * 200);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(skillsSection);
+    }
+
+    function projectsObserver() {
+        const tiles = document.querySelectorAll('.project-tile');
+        const projectsSection = document.getElementById('projects');
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    tiles.forEach((tile, index) => {
+                        setTimeout(() => {
+                            tile.classList.remove('hidden');
+                            tile.classList.add('animate-fadein');
+                        }, index * 500);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(projectsSection);
+    }
+
+    function welcomeObserver() {
+        const welcomeSection = document.getElementById('welcome-section');
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    triggerWelcomeAnimation();
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(welcomeSection);
+    }
+
+    function decodeHTMLEntities(text) {
+        var txt = document.createElement("textarea");
+        txt.innerHTML = text;
+        return txt.value;
+    }
+
+    window.onscroll = function () { highlightSection() };
+
+    function highlightSection() {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("#navbar a");
+
+        let currentSectionId = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 70;
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute("id");
             }
-        } else if (event.key === 'Enter') {
-            event.preventDefault();
-            this.submit();
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSectionId}`) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    function triggerWelcomeAnimation() {
+        var nameElement = document.getElementById('welcome-name');
+        var jobTitleElement = document.getElementById('welcome-jobtitle');
+        var greetingElement = document.getElementById('greeting-message');
+
+        nameElement.classList.remove('animate-fadein');
+        jobTitleElement.classList.remove('animate-slidein');
+        greetingElement.classList.remove('animate-slidein-top-delay');
+
+        void nameElement.offsetWidth;
+        void jobTitleElement.offsetWidth;
+        void greetingElement.offsetWidth;
+
+        nameElement.classList.add('animate-fadein');
+        jobTitleElement.classList.add('animate-slidein');
+        setTimeout(displayGreeting, 100);
+    }
+
+    function displayGreeting() {
+        const now = new Date();
+        const hours = now.getHours();
+        let greeting;
+
+        if (hours < 12) {
+            greeting = "Good Morning!";
+        } else if (hours < 18) {
+            greeting = "Good Afternoon!";
+        } else {
+            greeting = "Good Evening!";
         }
-    });
+        const greetingElement = document.getElementById('greeting-message');
+        greetingElement.innerText = greeting;
+        greetingElement.classList.add('animate-slidein-top-delay');
+    }
 });
