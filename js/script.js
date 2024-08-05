@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const inputs = document.querySelectorAll('.form-control');
 
-    // Function to update placeholder
     function updatePlaceholder() {
         if (this.value || document.activeElement === this) {
             this.placeholder = this.dataset.placeholder;
@@ -152,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Attach event listeners to each input
     inputs.forEach(input => {
         input.addEventListener('focus', updatePlaceholder);
         input.addEventListener('blur', updatePlaceholder);
