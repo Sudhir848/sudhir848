@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startPosition = window.scrollY;
         const endPosition = targetElement.offsetTop;
         const distance = endPosition - startPosition;
-        const duration = 900;
+        const duration = 500;
         const easing = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 
         let startTime = null;
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             skill.classList.remove('hidden');
                             skill.classList.add('animate-fadein');
-                        }, index * 200);
+                        }, index * 100);
                     });
                     observer.unobserve(entry.target);
                 }
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             tile.classList.remove('hidden');
                             tile.classList.add('animate-fadein');
-                        }, index * 500);
+                        }, index * 300);
                     });
                     observer.unobserve(entry.target);
                 }
